@@ -1,0 +1,27 @@
+name: Build PercentOf Plugin
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup MSVC Developer Command Prompt
+      uses: ilammy/msvc-dev-cmd@v1
+
+    - name: Compile PercentOf.dll
+      run: |
+        cl /LD /EHsc /Fe:PercentOf.dll PercentOf.cpp
+
+    - name: Upload PercentOf.dll as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: PercentOf-dll
+        path: PercentOf.dll
