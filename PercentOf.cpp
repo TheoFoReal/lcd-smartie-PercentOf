@@ -23,11 +23,11 @@ extern "C" DLLEXPORT char* __stdcall function1(char* param1, char* param2) {
     }
 
     if (whole == 0.0) {
-        std::snprintf(outbuf, sizeof(outbuf), "0%%");
+        std::snprintf(outbuf, sizeof(outbuf), "0");
         return outbuf;
     }
 
     double percent = (part / whole) * 100.0;
-    std::snprintf(outbuf, sizeof(outbuf), "%.0f%%", percent);
+    std::snprintf(outbuf, sizeof(outbuf), "%.0f", percent);
     return outbuf;
 }
